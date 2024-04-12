@@ -1,0 +1,22 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "f7d7125c34721c63dd02b64c738e4ed4"
+name = "GiftExpress Notify Dev"
+handle = "giftexpress-notify-dev"
+application_url = "https://e60d-103-54-105-90.ngrok-free.app/shopify-app/GiftNotificationDev/"
+embedded = true
+
+[build]
+dev_store_url = "krutik-patel.myshopify.com"
+
+[auth]
+redirect_urls = [
+  "https://e60d-103-54-105-90.ngrok-free.app/shopify-app/GiftNotificationDev/install.php",
+  "https://e60d-103-54-105-90.ngrok-free.app/shopify-app/GiftNotificationDev/generate_token.php"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false

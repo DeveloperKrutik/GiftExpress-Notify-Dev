@@ -1,0 +1,74 @@
+{% capture random %}{{ 'now' | date: "%09N" }}{% endcapture %}
+
+  {% if block.settings.input_field == 'text' %}
+  
+    {% if block.settings.show_label == true %}
+      <label for="giftexpress_notify_{{ block.settings.label }}_{{random}}">{{ block.settings.label }}</label>
+    {% endif %}
+    <input type="text" class="giftexpress_notify_input_field" data-category="{{ block.settings.label }}" id="giftexpress_notify_{{ block.settings.label }}_{{random}}" placeholder="{{ block.settings.placeholder }}">
+  
+  {% elsif block.settings.input_field == 'email' %}
+    
+    {% if block.settings.show_label == true %}
+      <label for="giftexpress_notify_{{ block.settings.label }}_{{random}}">{{ block.settings.label }}</label>
+    {% endif %}
+    <input type="email" class="giftexpress_notify_input_field" data-category="{{ block.settings.label }}" id="giftexpress_notify_{{ block.settings.label }}_{{random}}" placeholder="{{ block.settings.placeholder }}">
+  
+  {% elsif block.settings.input_field == 'textarea' %}
+  
+    {% if block.settings.show_label == true %}
+      <label for="giftexpress_notify_{{ block.settings.label }}_{{random}}">{{ block.settings.label }}</label>
+    {% endif %}
+    <textarea id="giftexpress_notify_{{ block.settings.label }}_{{random}}" data-category="{{ block.settings.label }}" class="giftexpress_notify_input_field" rows="4" placeholder="{{ block.settings.placeholder }}"></textarea>
+  
+  {% endif %}
+  
+  {% schema %}
+  {
+    "name": "GiftExpress Notify Dev",
+    "target": "section",
+    "javascript": "giftexpress_notify.js",
+    "enabled_on": {
+      "templates": ["product"]
+    },
+    "settings": [
+      {
+        "type": "select", "id": "input_field", "label": "Input Field",
+        "options": [
+          {
+            "value": "text",
+            "label": "Text"
+          },
+          {
+            "value": "email",
+            "label": "Email"
+          },
+          {
+            "value": "textarea",
+            "label": "Textarea"
+          }
+        ], "default": "text"
+      },
+      {
+        "type": "text",
+        "id": "label",
+        "label": "Label",
+        "default": "Label"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Placeholder",
+        "default": "This is placeholder"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_label",
+        "label": "Show label",
+        "default": true
+      }
+    ]
+  }
+  {% endschema %}
+  
+  
